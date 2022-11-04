@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487fee596cca27f4d8bf7b136bd27968, type: 3}
   m_Name: Player Bow
   m_EditorClassIdentifier: 
+  itemID: 1e2087f0-3655-4375-bc11-67b831de6700
+  displayName: Bow
+  description: A bow that requires a strong arm to draw
+  icon: {fileID: 21300000, guid: ec22508be0cdfba4abbaeb770bef08aa, type: 3}
+  pickup: {fileID: 943862483920023807, guid: 2eaf685b25c2de1429378bac3a8660e8, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: 4e904e12036abdb40ac859236246b8cb, type: 2}
   weaponPrefab: {fileID: 702122383518744999, guid: 9d6a70bd2f1cbb644b76c0619258857c,
     type: 3}

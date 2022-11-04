@@ -5,6 +5,8 @@
         None,
         Movement,
         Combat,
-        Pickup
+        Pickup,
+        FullPickup,
+        UI
     }
 }

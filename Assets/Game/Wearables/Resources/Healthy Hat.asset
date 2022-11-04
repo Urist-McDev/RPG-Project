@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e45b17b877cd9e478fcefbce2244458, type: 3}
+  m_Name: Healthy Hat
+  m_EditorClassIdentifier: 
+  itemID: a7b284e1-7ac0-4032-984b-6ce2d872fea4
+  displayName: Healthy Hat
+  description: Beats going to the gym
+  icon: {fileID: 21300000, guid: c1b61b3a91732a747a8496fc75a13fe2, type: 3}
+  pickup: {fileID: 2091155012936711209, guid: 93dd2bfb2a69d3b4faf1aa29bb4cfa34, type: 3}
+  stackable: 0
+  allowedEquipLocation: 0
+  additiveModifiers:
+  - stat: 0
+    value: 50
+  percentageModifiers: []

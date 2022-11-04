@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487fee596cca27f4d8bf7b136bd27968, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  itemID: 2f2dd59c-3941-467c-9d44-56ee04270bb5
+  displayName: Sword
+  description: A blade that might be a little chipped
+  icon: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
+  pickup: {fileID: 1095113094276547594, guid: bdb1a48f8c1cee2438337a0ef50a50ac, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: 1c9859daad8745245b0f967a8250b5dd, type: 2}
   weaponPrefab: {fileID: 6723091363925851790, guid: 4ffeee1e18fa5074e8f835524e6dc852,
     type: 3}
