@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using RPG.Core;
 
 namespace RPG.Dialogue
 {
@@ -10,22 +11,28 @@ namespace RPG.Dialogue
     {
         Dialogue currentDialogue;
         DialogueNode currentNode = null;
+        AIConversant currentConversant = null;
         bool isChoosing = false;
+        [SerializeField] string playerName;
 
         public event Action onConversationUpdated;
 
-        public void StartDialogue(Dialogue newDialogue)
+        public void StartDialogue(AIConversant newConversant, Dialogue newDialogue)
         {
+            currentConversant = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
+            TrigerEnterAction();
             onConversationUpdated();
         }
 
         public void Quit()
         {
             currentDialogue = null;
+            TrigerExitAction();
             currentNode = null;
             isChoosing = false;
+            currentConversant = null;
             onConversationUpdated();
         }
 
@@ -51,35 +58,93 @@ namespace RPG.Dialogue
 
         public IEnumerable<DialogueNode> GetChoices()
         {
-            return currentDialogue.GetPlayerChildren(currentNode);
+            return FilterOnCondition(currentDialogue.GetPlayerChildren(currentNode));
         }
 
         public void SelectChoice(DialogueNode chosenNode)
         {
             currentNode = chosenNode;
+            TrigerEnterAction();
             isChoosing = false;
             Next();
         }
 
         public void Next()
         {
-            int numPlayerResponses = currentDialogue.GetPlayerChildren(currentNode).Count();
+            int numPlayerResponses = FilterOnCondition(currentDialogue.GetPlayerChildren(currentNode)).Count();
             if (numPlayerResponses > 0)
             {
                 isChoosing = true;
+                TrigerExitAction();
                 onConversationUpdated();
                 return;
             }
 
-            DialogueNode[] children = currentDialogue.GetAIChildren(currentNode).ToArray();
+            DialogueNode[] children = FilterOnCondition(currentDialogue.GetAIChildren(currentNode)).ToArray();
             int randomIndex = UnityEngine.Random.Range(0, children.Count());
+            TrigerExitAction();
             currentNode = children[randomIndex];
+            TrigerEnterAction();
             onConversationUpdated();
         }
 
         public bool HasNext()
         {
-            return currentDialogue.GetAllChildren(currentNode).Count() > 0;
+            return FilterOnCondition(currentDialogue.GetAllChildren(currentNode)).Count() > 0;
+        }
+
+        public string GetCurrentConversantName()
+        {
+            if (isChoosing)
+            {
+                return playerName;
+            }
+            else
+            {
+                return currentConversant.GetAIName();
+            }
+        }
+
+        private void TrigerEnterAction()
+        {
+            if (currentNode != null)
+            {
+                TriggerAction(currentNode.GetOnEnterAction());
+            }
+        }
+
+        private IEnumerable<DialogueNode> FilterOnCondition(IEnumerable<DialogueNode> inputNode)
+        {
+            foreach (var node in inputNode)
+            {
+                if (node.CheckCondition(GetEvaluators()))
+                {
+                    yield return node;
+                }
+            }
+        }
+
+        private IEnumerable<IPredicateEvaluator> GetEvaluators()
+        {
+            return GetComponents<IPredicateEvaluator>();
+        }
+
+        private void TrigerExitAction()
+        {
+            if (currentNode != null)
+            {
+                TriggerAction(currentNode.GetOnExitAction());
+            }
+        }
+
+        private void TriggerAction(string action)
+        {
+            if (action == "") return;
+
+            foreach (DialogueTrigger trigger in currentConversant.GetComponents<DialogueTrigger>())
+            {
+                trigger.Trigger(action);
+            }
         }
     }
 }
