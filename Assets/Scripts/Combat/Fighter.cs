@@ -166,6 +166,18 @@ namespace RPG.Combat
             GetComponent<Mover>().Cancel();
         }
 
+        public Transform GetHandTransform(bool isRightHand)
+        {
+            if (isRightHand)
+            {
+                return rightHandTransform;
+            }
+            else
+            {
+                return leftHandTransform;
+            }
+        }
+
         private void StopAttack()
         {
             GetComponent<Animator>().ResetTrigger("attack");

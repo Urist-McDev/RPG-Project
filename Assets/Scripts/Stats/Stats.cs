@@ -9,6 +9,10 @@ namespace RPG.Stats
         Health,
         XPReward,
         XPToLevelUp,
-        Damage
+        Damage,
+        PsyFocus,
+        FocusRegenRate,
+        TotalTraitPoints,
+        BuyingDiscountPercentage
     }
 }

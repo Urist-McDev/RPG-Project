@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f961fb94cb9634b9b13c21bd965f95, type: 3}
+  m_Name: Spawn Projectile
+  m_EditorClassIdentifier: 
+  projectileToSpawn: {fileID: 4661146426700197968, guid: 17e73d35773ebbf41883a40b4bcdb6b1,
+    type: 3}
+  damage: 20
+  isRightHand: 1

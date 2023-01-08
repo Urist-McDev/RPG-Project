@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a376575039b30354b844e416d5bb3e59, type: 3}
+  m_Name: Firespray
+  m_EditorClassIdentifier: 
+  itemID: 9c201d4f-1e04-440c-8d05-c4c90d01c72e
+  displayName: Firespray
+  description: haha, fire go brrrr
+  icon: {fileID: 21300000, guid: a1ec2c0ddc0da634b85f0f465fec2d0d, type: 3}
+  pickup: {fileID: 2091155012936711209, guid: 93dd2bfb2a69d3b4faf1aa29bb4cfa34, type: 3}
+  stackable: 0
+  price: 50
+  category: 4
+  consumable: 0
+  targetingStrategy: {fileID: 11400000, guid: 85f557392bb83884592bb7cf65fae5d8, type: 2}
+  filterStrategies:
+  - {fileID: 11400000, guid: 109b251c514280d4cbf19d6c5fa7674e, type: 2}
+  effectStrategies:
+  - {fileID: 11400000, guid: e242d967423b0084882a967a678a7056, type: 2}
+  - {fileID: 11400000, guid: a964777f28a8804419081cc912ed3566, type: 2}
+  - {fileID: 11400000, guid: fbc03c5663afe1d49932453904d03c2f, type: 2}
+  cooldownTime: 2
+  focusCost: 20
